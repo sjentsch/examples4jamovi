@@ -1,29 +1,36 @@
-# grades of Psychology students in Dr. Zeppos class
-psych = c(50, 60, 60, 64, 66, 66, 67, 69, 70, 74, 76, 76, 77, 79, 79, 79, 81, 82, 82, 89)
-# calculate the mean of these scores
-M = mean(psych)
+# The data are contained in the file zeppo in the lsj-data library.
+# To open the file: ☰ → Open → Data Library → learning statisticss
+# ith jamovi → Zeppo
+
+# The grades of Psychology students in Dr. Zeppos class can be found
+# in the variable grade
+# calculate the mean of these scores (and show it in the output window)
+M = mean(data$grade)
 M
+
 # the standard deviation is taken from the whole sample of Dr. Zeppo
 # (cf. LSJ, Ch. 11.1.1); it is quite reassuring to know that this standard
 # deviation for the whole sample and the one in our psychology subgroup is
-# (more or less) identical: 9.5 vs. 9.52
+# (more or less) identical: 9.5 vs. 9.521
 9.5
-sd(psych)
+SD = sd(data$grade)
+SD
+
 # now, we calculate the standard error which is the standard deviation divided
 # the square root of the sample size; the original sample has 20 students
-# length(psych) tells us how many elements are contained in the variable psych
-# we could as well write SEM = 9.5 / sqrt(20) but then we would have to adapt
-# n = 20 each time we add or remove a student from the variable psych
-SEM = 9.5 / sqrt(length(psych))
+# length(data$grade) tells us how many elements are contained in the variable
+# grade
+SEM = 9.5 / sqrt(length(data$grade))
 SEM
+
 # let's play a little around with that value and check what happens to
 # the standard error of mean when the sample size is varied; 
 # we compare how the standard error changes from 5 students, ...
 9.5 / sqrt(5)
 # over the orginal 20, ...
 9.5 / sqrt(20)
-# to 100 students
-9.5 / sqrt(100)
+# to 80 students
+9.5 / sqrt(80)
 # What you can see is that the larger the sample gets, the smaller gets
 # the standard error of mean: this is logical because, the more measurements
 # you collect the more exact will your mean be (and the smaller gets the error
