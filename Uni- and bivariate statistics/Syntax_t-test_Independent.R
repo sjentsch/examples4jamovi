@@ -1,4 +1,9 @@
-# first we select which rows belong to each tutor and 
+# The syntax underneath uses the harpo-file from the lsj-data. It can be opened using:
+# ☰ → Open → Data Library → learning statistics with jamovi (lsj-data) → Harpo
+# After opening the file, you may have to set the variable types correctly: ID to ID,
+# and grade to continuous. Afterwards, copy the syntax underneath into a Rj window.
+
+# First we select which rows belong to each tutor and 
 # determine the number of participants in each group
 # and convert the data into a format (integers) 
 # that can be used for calculations
