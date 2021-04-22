@@ -3,9 +3,9 @@
 # ith jamovi → Zeppo
 
 # The grades of Psychology students in Dr. Zeppos class can be found
-# in the variable grade
+# in the variable x.
 # calculate the mean of these scores (and show it in the output window)
-M = mean(data$grade)
+M = mean(data$x)
 M
 
 # the standard deviation is taken from the whole sample of Dr. Zeppo
@@ -13,14 +13,14 @@ M
 # deviation for the whole sample and the one in our psychology subgroup is
 # (more or less) identical: 9.5 vs. 9.521
 9.5
-SD = sd(data$grade)
+SD = sd(data$x)
 SD
 
 # now, we calculate the standard error which is the standard deviation divided
 # the square root of the sample size; the original sample has 20 students
 # length(data$grade) tells us how many elements are contained in the variable
 # grade
-SEM = 9.5 / sqrt(length(data$grade))
+SEM = 9.5 / sqrt(length(data$x))
 SEM
 
 # let's play a little around with that value and check what happens to
