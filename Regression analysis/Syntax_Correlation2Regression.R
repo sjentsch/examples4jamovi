@@ -2,8 +2,6 @@
 # (how much Dan sleeps) and dan.grump (how grumpy Dan is)
 # we first use those columns to calculate a correlation
 resCrr = cor.test(data$dan.grump, data$dan.sleep)
-# "data = data" looks maybe a little confusing but our variable data is assigned
-# to the parameter data of the R-function
 # now we "extract" several pieces of information from these results
 # [1] ]the correlation
 as.double(resCrr$estimate)
@@ -19,6 +17,8 @@ resCrr$p.value
 # we have to think a little which variable is the one exterting an influence
 # (i.e. the independent variable) and on which variable this influence exerts
 # its effect (i.e., the dependent variable)
+# "data = data" looks maybe a little confusing but our jamovi data set (called "data")
+# is assigned to the parameter data of the R-function
 regMdl = lm(dan.grump ~ dan.sleep, data = data)
 # next, we assess the parameters of this model, e.g., its significance, etc.
 regSmm = summary(regMdl)
