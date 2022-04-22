@@ -10,6 +10,14 @@ summary(data[2:3])
 # if all suits were equally distributed you would have 50 in each category
 # this is what you would expect
 exp = c(50, 50, 50, 50)
+# we, of course, could also calculate how many values per category we would
+# expect; we take the sum of all observations and divide it through the number
+# of categories (club, diamond, heart, spade; length(levels()) - gives you the
+# number of categories of a factor and length says how many are there
+sum(obs_1)
+length(levels(data[[2]]))
+exp = rep(sum(obs_1) / length(levels(data[[2]])), length(levels(data[[2]])))
+exp
 # the chi-squared value is calculated by subtracting what you expected
 # from what you observed (obs_1 - exp); this difference is squared (^ 2), 
 # set into relation to what you expect ( / exp) and summed over

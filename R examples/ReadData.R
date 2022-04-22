@@ -1,7 +1,7 @@
 # define directory where the data are stored
 # please note that you may have to change "/" into "\"
 # if you are on a Windows machine
-dirDta = 'NeoCard'
+dirDta = 'NeoCard/'
 # create a list with a subject / participant codes / IDs
 sbjLst = c('NC_3398-201111Nov14', 'NC_3398-201111Nov14', 'NC_3409-201111Nov18', 'NC_3418-201111Nov17', 'NC_3428-201111Nov21', 'NC_3439-201112Dec02', 'NC_3448-201112Dec05',
            'NC_3458-201112Dec05', 'NC_3469-201112Dec16', 'NC_3479-201112Dec16', 'NC_3489-201202Feb24')

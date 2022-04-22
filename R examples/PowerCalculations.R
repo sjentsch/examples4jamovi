@@ -1,12 +1,12 @@
 # the very first time, you want to use the pwr-package, you have to install it
-install.packages('pwr')
+install.packages('pwr', dep = TRUE)
 # =================================================
 
 # initialize the library for the power calcaultions
 library(pwr)
 
 # Power calculations - determining required sample size - for an Independent Samples t-test (undirected hypothesis: µ0 ≠ µ1)
-pwr::pwr.t.test(d = 0.5, sig.level = 0.05, power = 0.9, type="two.sample", alternative="two.sided")
+pwr.t.test(d = 0.5, sig.level = 0.05, power = 0.9, type="two.sample", alternative="two.sided")
 
 # Power calculations - determining required sample size - for an Independent Samples t-test (directed hypothesis: µ0 < µ1)
 pwr.t.test(d = 0.5, sig.level = 0.05, power = 0.9, type="two.sample", alternative="greater")
