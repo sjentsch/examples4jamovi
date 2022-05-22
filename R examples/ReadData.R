@@ -7,12 +7,12 @@ sbjLst = c('NC_3398-201111Nov14', 'NC_3398-201111Nov14', 'NC_3409-201111Nov18', 
            'NC_3458-201112Dec05', 'NC_3469-201112Dec16', 'NC_3479-201112Dec16', 'NC_3489-201202Feb24')
 # define which item belongs to which NEO-scale and whether the item
 # is normal or reverted
-neoItm = list(N1 = c( -1, +31, -61,  +91, -121, +151, -181, +211),
-              N2 = c( +6, -36, +66,  -96, +126, -156, +186, +216),
-              N3 = c(-11, +41, -71, +101, +131, +161, +191, +221),
-              N4 = c(+16, -46, +76, -106, +136, -166, +196, +226),
-              N5 = c(-21, +51, -81, +111, -141, +171, +201, -231),
-              N6 = c(+26, -56, +86, -116, +146, -176, -206, -236))
+neoItm = list(N1 = list(name = "Anxiety (N1)",            item = c( -1, +31, -61,  +91, -121, +151, -181, +211)),
+              N2 = list(name = "Angry Hostility (N2)",    item = c( +6, -36, +66,  -96, +126, -156, +186, +216)),
+              N3 = list(name = "Depression (N3)",         item = c(-11, +41, -71, +101, +131, +161, +191, +221)),
+              N4 = list(name = "Self-Consciousness (N4)", item = c(+16, -46, +76, -106, +136, -166, +196, +226)),
+              N5 = list(name = "Impulsiveness (N5)",      item = c(-21, +51, -81, +111, -141, +171, +201, -231)),
+              N6 = list(name = "Vulnerability (N6)",      item = c(+26, -56, +86, -116, +146, -176, -206, -236)))
 
 # generate an empty variable to be replaced with the first data set that is read 
 dtaFrm = NULL
@@ -39,8 +39,10 @@ for (crrSbj in sbjLst) {
     # go through the different subscales
     for (crrScl in names(neoItm)) {
         # assemble a command to calculate the sum for the different NEO-scales
+        # if the questionnaire is using mean scale scores instead mean sum scores,
+        # just replace "sum(" by "mean("
         crrCmd = paste0('valVar$NEO_', crrScl, ' = sum(')
-        for (crrItm in neoItm[[crrScl]]) {
+        for (crrItm in neoItm[[crrScl]][["item"]]) {
             # depending on whether the item was defined as "normal" or "reverted"
             # a respective string is added; the scale has 5 response options, thus
             # if an item has to be reverted, the item response has to be subtracted
@@ -52,7 +54,7 @@ for (crrSbj in sbjLst) {
             }
         }
         # evaluate the assembled command
-        eval(parse(text = paste0(substr(crrCmd, 1, nchar(crrCmd) - 2), ')')))
+        eval(parse(text = paste0(sub(", $", "", crrCmd), ')')))
     }
 
     # for the first participant, assign the valVar to dtaFrm
@@ -68,5 +70,17 @@ for (crrSbj in sbjLst) {
     }
 }
 
-save(list = 'dtaFrm', file = paste0(dirDta, 'Trial.RData'))
+# check whether jmvReadWrite is installed, if yes, store the resulting data frame in jamovi format (.omv)
+# otherwise as RData-file
+if (nzchar(system.file(package = "jmvReadWrite"))) {
+    # adding variable labels
+    for (crrScl in names(neoItm)) attr(dtaFrm[[paste0("NEO_", crrScl)]], "jmv-desc") <- neoItm[[crrScl]][["name"]]
+    # we could further assign other attributes such as measurement type: attr(,"measureType")
+    # NB: You can get an idea which attributes can be used by reading a jamovi-file with sveAtt = TRUE
+    #     trlDta = jmvReadWrite::read_omv("[...].omv", sveAtt = TRUE)
+    for (crrCol in seq_along(dtaFrm)) attr(dtaFrm[[crrCol]], "measureType") <- ifelse(crrCol == 1, "ID", "Continuous")
+    jmvReadWrite::write_omv(dtaFrm = dtaFrm, fleOut = "NeoCard.omv")
+} else {
+    save(list = 'dtaFrm', file = paste0(dirDta, 'NeoCard.RData'))
+}
 

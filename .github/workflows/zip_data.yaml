@@ -1,0 +1,12 @@
+name: zip-data
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: ZIP example data
+      run: zip -r "R examples/NeoCard.zip" "R examples/NeoCard/*"
