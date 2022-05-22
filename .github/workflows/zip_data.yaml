@@ -9,4 +9,4 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: ZIP example data
-      run: zip -r R\ examples/NeoCard.zip R\ examples/NeoCard/*
+      run: rm -f R\ examples/NeoCard.zip && zip -r R\ examples/NeoCard.zip R\ examples/NeoCard/*
