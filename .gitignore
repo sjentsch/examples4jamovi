@@ -38,5 +38,6 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-# NeoCard data and ZIP files
-NeoCard.*
+# NeoCard data files
+NeoCard.omv
+NeoCard.RData
