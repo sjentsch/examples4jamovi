@@ -10,7 +10,7 @@ trlCnt = 'repTrl.thisIndex';
 file.remove('AllRes.csv')
 fleLst = list.files('.', '*.csv');
 allCSV = data.frame();
-for (F in 1:length(fleLst)) {
+for (F in seq_along(fleLst)) {
     crrCSV = read.csv(fleLst[F]);
     # select the fields that we need (defined at the top of the file)
     crrCSV = crrCSV[, c(sbjCde, tgtVar, trlCnt)];
