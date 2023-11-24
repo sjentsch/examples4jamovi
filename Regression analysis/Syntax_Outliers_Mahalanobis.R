@@ -13,7 +13,7 @@ outRow <- names(which(
 # otherwise a notice that no outliers were found
 if (length(outRow) > 0) {
     # add this output to a filter to exclude
-    cat(paste0(paste0("ROW() != ", c("", selRow)), collapse = " and "))
+    cat(paste0(c("", paste0("ROW() != ", outRow)), collapse = " and "))
 } else {
     cat("There were no outliers found.")
 }
