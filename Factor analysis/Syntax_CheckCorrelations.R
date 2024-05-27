@@ -7,8 +7,10 @@
 # Given that "A1" to "O5" are 25 variables and that we exclude the first
 # column ("ID"), we have to calculate correlations for the 2nd to the 26th
 # column, i.e., [2:26]
-# For SAQ, are the columns [1:23], for Williams [4:31] and for TOSSE-R [1:28]
 # ===========================================================================
+# the following line outputs the column number and the variable name
+sprintf("%d: %s", seq(ncol(data)), names(data))
+# this information can be used to adjust [2:26] underneath
 crrMtx = abs(cor(sapply(data[2:26], jmvcore::toNumeric), use = "pairwise"))
 # the correlation with itself is always 1, we don't want to include that
 diag(crrMtx) <- NA
