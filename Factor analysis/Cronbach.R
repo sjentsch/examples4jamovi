@@ -16,14 +16,14 @@ X
 mean(abs(X[lower.tri(X)]))
 # this values is then multiplied with the number of values in the
 # covariance matrix (number of rows x number of columns)
-mean(abs(X[lower.tri(X)])) * nrow(X) * ncols(X)
+mean(abs(X[lower.tri(X)])) * nrow(X) * ncol(X)
 # and that values is then set in relation to (i.e., divided by) the total
 # amount of variation, we first show the value for the total amount of
 # variation
 sum(abs(X))
 # and then we set the inter-item covariances (their mean multiplied by the
 # number of possible combination) into relation to the total variation
-mean(abs(X[lower.tri(X)])) * nrow(X) * ncols(X) / sum(abs(X))
+mean(abs(X[lower.tri(X)])) * nrow(X) * ncol(X) / sum(abs(X))
 
 # -----------------------------------------------------------------------------
 
