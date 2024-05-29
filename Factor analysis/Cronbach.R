@@ -23,19 +23,18 @@ mean(abs(X[lower.tri(X)])) * nrow(X) * ncol(X)
 sum(abs(X))
 # and then we set the inter-item covariances (their mean multiplied by the
 # number of possible combination) into relation to the total variation
-mean(abs(X[lower.tri(X)])) * nrow(X) * ncol(X) / sum(abs(X))
+sprintf("%.2f / %.2f = %.4f", mean(abs(X[lower.tri(X)])) * nrow(X) * ncol(X),
+sum(abs(X)), mean(abs(X[lower.tri(X)])) * nrow(X) * ncol(X) / sum(abs(X)))
 
 # -----------------------------------------------------------------------------
-
 # another way to calculate Cronbach's alpha that may be more “intuitive” is:
 # we take the variance-covariance-matrix (X) and copy it to a new variable (Y)
 Y <- X
-# in that new variable, we replace the values in the main diagonal of Y (the
-# variances of each of the variables) with the average value of the
-# inter-item-covariances (ie., how much the items in the questionnaire on
-# average covary with one another)
+# replace the values in the main diagonal (originally the variances for each
+# of the variables) with the average value of the inter-item-covariances (ie.,
+# how much the items in the questionnaire on average covary with one another)
 diag(Y) <- mean(abs(X[lower.tri(X)]))
 
-# we divide that covariance matrix Y (where we replaced the variances by the
-# average inter-item covariances) by the original variance-covariance-matrix (X)
-sum(abs(Y)) / sum(abs(X))
+# divide that covariance matrix (variances replaced by the average inter-item
+# covariances) by the original variance-covariance-martix
+sprintf("%.2f / %.2f = %.4f", sum(abs(Y)), sum(abs(X)), sum(abs(Y)) / sum(abs(X)))
