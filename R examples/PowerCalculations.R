@@ -1,4 +1,4 @@
-# check whether the packages exist, otherwise install it
+# check whether the packages exist, otherwise install them
 if (!nzchar(system.file(package = "pwr")))   install.packages('pwr',   dep = TRUE)
 if (!nzchar(system.file(package = "pwrss"))) install.packages('pwrss', dep = TRUE)
 # =================================================
