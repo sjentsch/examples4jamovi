@@ -1,4 +1,4 @@
-# the very first time, you want to use the pwr-package, you have to install it
+# check whether the packages exist, otherwise install it
 if (!nzchar(system.file(package = "pwr")))   install.packages('pwr',   dep = TRUE)
 if (!nzchar(system.file(package = "pwrss"))) install.packages('pwrss', dep = TRUE)
 # =================================================
