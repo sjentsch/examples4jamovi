@@ -12,7 +12,7 @@ pwr::pwr.t.test(d = 0.5, sig.level = 0.05, power = 0.9, type="two.sample", alter
 pwrss::pwrss.t.2means(mu1 = 0.5, sd1 = 1, alpha = 0.05, power = 0.9, alternative = "greater")
 
 # Power calculations for an ANOVA (one factor with 4 steps [k = 4] - determining the sample size
-eta2 = 0.06
+eta2 <- 0.06
 pwr::pwr.anova.test(k = 4, f = sqrt(eta2 / (1 - eta2)), sig.level = 0.05, power = 0.8)
 pwrss::pwrss.f.ancova(eta2 = eta2, n.levels = 4, n.covariates = 0, alpha = 0.05, power = 0.8)
 pwrss::pwrss.f.ancova(eta2 = eta2, n.levels = c(4, 2), n.covariates = 0, alpha = 0.05, power = 0.8)
