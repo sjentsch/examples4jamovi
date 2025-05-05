@@ -1,6 +1,6 @@
 # the very first time, you want to use the pwr-package, you have to install it
-if (!nzchar(system.file("pwr")))   install.packages('pwr',   dep = TRUE)
-if (!nzchar(system.file("pwrss"))) install.packages('pwrss', dep = TRUE)
+if (!nzchar(system.file(package = "pwr")))   install.packages('pwr',   dep = TRUE)
+if (!nzchar(system.file(package = "pwrss"))) install.packages('pwrss', dep = TRUE)
 # =================================================
 
 # Power calculations - determining required sample size - for an Independent Samples t-test (undirected hypothesis: µ0 ≠ µ1)
